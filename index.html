@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther Kerubo Nyamweya — calm systems, tended daily</title>
+<meta name="description" content="Portfolio of Esther Kerubo Nyamweya — ICT support, systems administration and web development, practised calmly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Karla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF6ED; --sand:#EFE5D3; --ink:#413D35; --ink-2:#6F685B;
+  --sage:#7E8B74; --sage-2:#55624D; --terra:#B4552F; --terra-2:#94431F;
+  --pink:#D8A091; --pink-2:#EBD2C8;
+  --line:rgba(65,61,53,.16); --line-2:rgba(65,61,53,.36);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Karla","Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background-color:var(--paper);background-image:var(--noise);
+  font-size:16.5px;line-height:1.78;-webkit-font-smoothing:antialiased}
+::selection{background:var(--pink-2);color:var(--ink)}
+img{display:block;max-width:100%}
+a{color:var(--terra);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--terra-2)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px;border-radius:2px}
+[hidden]{display:none!important}
+section{scroll-margin-top:90px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,64px)}
+.skip{position:fixed;top:-70px;left:16px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:4px;transition:top .3s}
+.skip:focus{top:12px}
+.kicker{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage-2);display:flex;align-items:center;gap:12px}
+.kicker b{color:var(--terra);font-weight:600}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- header ---------- */
+header{position:fixed;inset:0 0 auto;z-index:50;padding-block:14px;transition:background .4s,box-shadow .4s}
+header.scrolled{background:rgba(250,246,237,.9);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.bar{display:flex;align-items:center;gap:clamp(14px,3vw,34px);flex-wrap:wrap}
+.wordmark{font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.wordmark .dot{width:9px;height:9px;border-radius:50%;background:var(--terra);animation:breatheDot 4s ease-in-out infinite}
+@keyframes breatheDot{0%,100%{transform:scale(.75);opacity:.65}50%{transform:scale(1.15);opacity:1}}
+nav{display:flex;gap:clamp(12px,2.4vw,28px);margin-left:auto;flex-wrap:wrap}
+nav a{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;padding-block:6px;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:2px;height:1px;width:0;background:var(--terra);transition:width .35s var(--ease)}
+nav a:hover{color:var(--ink)} nav a:hover::after{width:100%}
+.chime{display:flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);padding:8px 14px;border-radius:999px;transition:.3s}
+.chime:hover{border-color:var(--line-2);color:var(--ink)}
+.chime svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.chime[aria-pressed="true"]{color:var(--terra);border-color:var(--terra)}
+@media(max-width:860px){nav{order:3;width:100%}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:grid;align-items:center;padding-top:120px;padding-bottom:70px;position:relative;overflow:hidden}
+.beam{position:absolute;top:-15%;right:-12%;width:75%;height:130%;
+  background:linear-gradient(112deg,rgba(255,252,243,0) 34%,rgba(255,252,243,.65) 50%,rgba(255,252,243,0) 66%);
+  filter:blur(14px);animation:drift 26s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{to{transform:translate(-4%,3%) rotate(3deg)}}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(40px,6vw,90px);align-items:center;position:relative}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.7rem,6.2vw,4.7rem);line-height:1.08;letter-spacing:-.01em;margin:26px 0 24px}
+h1 em{font-weight:400}
+.lede{max-width:52ch;color:var(--ink-2);font-size:1.06rem}
+.lede strong{font-weight:600;color:var(--ink)}
+.ctas{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--terra);color:#FBF5EC;text-decoration:none;
+  font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:background .3s,transform .3s}
+.btn:hover{background:var(--terra-2);color:#FBF5EC;transform:translateY(-2px)}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.link-quiet{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:4px}
+.link-quiet:hover{color:var(--terra);border-color:var(--terra)}
+.hero-meta{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:14px 28px;flex-wrap:wrap;font-size:.86rem;color:var(--ink-2)}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta svg{width:14px;height:14px;stroke:var(--sage);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* breathing composition */
+.stage{justify-self:center;width:min(400px,82vw)}
+.arch{position:relative;aspect-ratio:4/5;background-color:var(--sand);background-image:var(--noise);
+  border:1px solid var(--line);border-radius:999px 999px 6px 6px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(65,61,53,.35)}
+.arch::after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.35);border-radius:999px 999px 4px 4px;pointer-events:none}
+.arch .halo{position:absolute;left:19%;bottom:16%;width:62%;aspect-ratio:1;border-radius:50%;background:var(--pink);
+  transform-origin:50% 78%;animation:breatheHalo 4s ease-in-out infinite}
+.arch .sun{position:absolute;left:30%;bottom:16%;width:40%;aspect-ratio:1;border-radius:50%;background:var(--terra);
+  transform-origin:50% 86%;animation:breatheSun 4s ease-in-out infinite;box-shadow:0 18px 40px -12px rgba(180,85,47,.45)}
+@keyframes breatheSun{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes breatheHalo{0%,100%{transform:scale(.94);opacity:.26}50%{transform:scale(1.06);opacity:.42}}
+.arch .horizon{position:absolute;left:10%;right:10%;bottom:34%;height:1px;background:var(--sage);opacity:.55}
+.breath{position:relative;margin-top:18px;height:24px;font-family:var(--serif);font-style:italic;color:var(--ink-2);font-size:.95rem;letter-spacing:.04em}
+.breath span{position:absolute;inset:0;text-align:center;animation:4s ease-in-out infinite}
+.breath .in{animation-name:capIn}.breath .out{animation-name:capOut}
+@keyframes capIn{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+@keyframes capOut{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(100px,15vh,170px)}
+section.sand{background-color:var(--sand);background-image:var(--noise);box-shadow:inset 0 1px 0 var(--line),inset 0 -1px 0 var(--line)}
+.shead{max-width:840px;margin-bottom:clamp(50px,7vh,84px)}
+.shead .kicker{margin-bottom:18px}
+h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.12;letter-spacing:-.01em}
+h2 em{font-weight:400}
+.sub{margin-top:18px;color:var(--ink-2);max-width:58ch;font-style:italic;font-family:var(--serif);font-size:1.05rem}
+
+/* practice */
+.practice-list{border-top:1px solid var(--line)}
+.pr{display:grid;grid-template-columns:70px 1fr;gap:clamp(16px,4vw,60px);padding-block:clamp(30px,4.5vh,46px);border-bottom:1px solid var(--line);transition:padding-left .45s var(--ease)}
+.pr:hover{padding-left:14px}
+.pr .idx{font-family:var(--serif);font-style:italic;color:var(--ink-2);font-size:1.05rem;padding-top:10px;transition:color .3s}
+.pr:hover .idx{color:var(--terra)}
+.pr h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.15}
+.pr .muse{font-family:var(--serif);font-style:italic;color:var(--sage-2);margin:6px 0 12px;font-size:1.02rem}
+.pr p{color:var(--ink-2);max-width:62ch}
+.pr .tags{margin-top:14px;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-2)}
+.pr .tags span::after{content:"·";margin:0 10px;color:var(--line-2)}
+.pr .tags span:last-child::after{content:""}
+
+/* work */
+.work-item{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,3vw,44px);align-items:center}
+.work-item + .work-item{margin-top:clamp(70px,10vh,120px)}
+.wi-media{grid-column:1/7}.wi-body{grid-column:7/13}
+.work-item.alt .wi-media{grid-column:7/13;order:2;margin-top:56px}
+.work-item.alt .wi-body{grid-column:1/7;order:1}
+.work-item.alt2 .wi-media{grid-column:2/8}
+.work-item.alt2 .wi-body{grid-column:8/13}
+.frame{position:relative;overflow:hidden;border-radius:220px 220px 6px 6px;border:1px solid var(--line)}
+.frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform 7s var(--ease);filter:sepia(.16) saturate(.9) brightness(1.03)}
+.frame::after{content:"";position:absolute;inset:0;background:rgba(238,229,211,.16);pointer-events:none}
+.kb:hover img{transform:scale(1.12) translateY(-1.5%)}
+.frame.tall{aspect-ratio:4/5}.frame.mid{aspect-ratio:1/1}
+.frame .fig{position:absolute;left:14px;bottom:12px;z-index:1;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,252,243,.94);background:rgba(65,61,53,.5);padding:6px 12px;border-radius:2px;backdrop-filter:blur(4px)}
+.wi-num{font-family:var(--serif);font-style:italic;color:var(--terra)}
+.wi-body h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,2.8vw,2.3rem);margin:10px 0 12px;line-height:1.15}
+.wi-body p{color:var(--ink-2);max-width:48ch}
+.wi-more{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.wi-more svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.stats{display:flex;gap:clamp(18px,3vw,36px);margin-top:26px;padding-top:20px;border-top:1px solid var(--line);flex-wrap:wrap}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:1.7rem;color:var(--terra);line-height:1.15}
+.stat span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+
+/* why this work */
+.why-list{border-top:1px solid var(--line)}
+.why{display:grid;grid-template-columns:150px 1fr;gap:clamp(22px,4vw,54px);padding-block:clamp(34px,5vh,52px);border-bottom:1px solid var(--line);align-items:start;cursor:pointer}
+.why .frame{aspect-ratio:4/5;border-radius:120px 120px 6px 6px}
+.why-date{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-2)}
+.why h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.9rem);margin:8px 0 2px;line-height:1.2}
+.why .org{color:var(--ink-2);font-size:.95rem}
+.why .quote{margin-top:16px;font-family:var(--serif);font-size:1.12rem;line-height:1.55;min-height:3.4em;color:var(--ink);max-width:58ch}
+.why .quote.hint{font-style:italic;color:var(--sage-2);font-size:1rem}
+.why .quote.typing::after{content:"";display:inline-block;width:2px;height:1em;background:var(--terra);margin-left:3px;vertical-align:-.15em;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+
+/* open days */
+.slots{border-top:1px solid var(--line);max-width:920px}
+.slot{border-bottom:1px solid var(--line)}
+.slot-head{width:100%;display:grid;grid-template-columns:1fr auto 30px;gap:18px;align-items:baseline;padding-block:26px;text-align:left}
+.slot-title{font-family:var(--serif);font-weight:400;font-size:clamp(1.25rem,2.2vw,1.7rem);transition:color .3s}
+.slot-head:hover .slot-title{color:var(--terra-2)}
+.slot-title i{font-style:italic;color:var(--sage-2);font-weight:300}
+.slot-status{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.pip{width:8px;height:8px;border-radius:50%;background:var(--sage);flex:none}
+.pip.low{background:var(--pink)}
+.pip.hollow{background:transparent;border:1px solid var(--sage-2)}
+.plus{width:26px;height:26px;stroke:var(--ink-2);fill:none;stroke-width:1.4;stroke-linecap:round;transition:transform .45s var(--ease);align-self:center}
+.slot.open .plus{transform:rotate(45deg);stroke:var(--terra)}
+.slot-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s var(--ease)}
+.slot.open .slot-body{grid-template-rows:1fr}
+.slot-body>div{overflow:hidden;min-height:0}
+.slot-inner{padding:0 0 32px;max-width:640px;color:var(--ink-2);opacity:0;transform:translateY(-6px);transition:opacity .45s .08s,transform .45s .08s}
+.slot.open .slot-inner{opacity:1;transform:none}
+.slot-inner .where{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-2);margin-bottom:12px}
+.dl{margin-top:16px;display:grid;gap:8px}
+.dl div{display:grid;grid-template-columns:110px 1fr;gap:14px;font-size:.94rem}
+.dl dt{font-family:var(--serif);font-style:italic;color:var(--sage-2)}
+.legend{margin-top:28px;font-size:.82rem;color:var(--ink-2);display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:8px}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start}
+.pitch p{color:var(--ink-2);max-width:46ch;margin-top:20px}
+.direct{margin-top:36px;border-top:1px solid var(--line)}
+.direct a.row{display:flex;align-items:center;gap:14px;padding-block:15px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;transition:padding-left .3s var(--ease),color .3s}
+.direct a.row:hover{color:var(--terra);padding-left:8px}
+.direct svg{width:17px;height:17px;stroke:var(--sage);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.direct small{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-2)}
+.form-panel{background-color:var(--sand);background-image:var(--noise);border:1px solid var(--line);
+  border-radius:140px 140px 6px 6px;padding:clamp(56px,7vw,80px) clamp(24px,4vw,48px) clamp(30px,4vw,44px)}
+.form-panel h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:24px}
+.form-wrap{display:grid}
+.form-wrap form,.form-wrap .success{grid-area:1/1;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-2);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;background:rgba(250,246,237,.75);border:1px solid var(--line-2);border-radius:3px;padding:12px 14px;font:inherit;color:var(--ink);transition:border-color .3s,background .3s}
+.field :is(input,select,textarea):focus{outline:none;border-color:var(--terra);background:#FDFBF5}
+.field textarea{min-height:92px;resize:vertical}
+.field .err{display:none;color:var(--terra-2);font-size:.88rem;margin-top:6px;font-style:italic;font-family:var(--serif)}
+.field.invalid .err{display:block}
+.field.invalid :is(input,textarea){border-color:var(--terra)}
+.form-note{font-size:.86rem;color:var(--ink-2);font-style:italic;font-family:var(--serif);margin-top:16px}
+.success{opacity:0;transform:translateY(10px);pointer-events:none;text-align:center;padding:26px 8px;align-self:center}
+.form-wrap.sent form{opacity:0;transform:translateY(-10px);pointer-events:none}
+.form-wrap.sent .success{opacity:1;transform:none;pointer-events:auto}
+.success .pip{width:14px;height:14px;background:var(--terra);margin:0 auto 18px;animation:breatheDot 4s ease-in-out infinite}
+.success h4{font-family:var(--serif);font-weight:400;font-size:1.55rem;margin-bottom:10px}
+.success p{color:var(--ink-2);max-width:34ch;margin:0 auto}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:clamp(50px,8vh,80px) 36px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-end}
+.foot-line{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.9rem);max-width:20ch;line-height:1.3}
+.foot-meta{font-size:.88rem;color:var(--ink-2);display:grid;gap:6px}
+.foot-meta a{color:var(--ink-2)} .foot-meta a:hover{color:var(--terra)}
+.foot-base{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+
+/* ---------- curriculum page ---------- */
+.cv-top{padding-top:130px;padding-bottom:40px}
+.cv-head{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;flex-wrap:wrap;margin-bottom:24px}
+.cv-head h1{font-size:clamp(2.4rem,5vw,3.8rem);margin:14px 0 0}
+.cv-contacts{display:flex;gap:10px 24px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-2);margin-top:16px}
+.print-btn{border:1px solid var(--line-2);border-radius:2px;padding:12px 18px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);display:inline-flex;gap:10px;align-items:center;transition:.3s}
+.print-btn:hover{border-color:var(--terra);color:var(--terra)}
+.print-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cv-sec{padding-block:46px;border-top:1px solid var(--line)}
+.cv-sec h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:34px}
+.cv-item{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:clamp(20px,4vw,60px);padding-block:30px}
+.cv-item + .cv-item{border-top:1px solid var(--line)}
+.cv-when{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-2)}
+.cv-item h3{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2}
+.cv-item .org{color:var(--ink-2);margin-top:4px;font-size:.94rem}
+.cv-item ul{list-style:none;color:var(--ink-2);display:grid;gap:10px;max-width:72ch;font-size:.97rem}
+.cv-item li{padding-left:20px;position:relative}
+.cv-item li::before{content:"";position:absolute;left:0;top:.78em;width:8px;height:1px;background:var(--terra)}
+.skills-line{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.4rem);line-height:2;color:var(--ink);max-width:64ch}
+.skills-line i{color:var(--terra);font-style:normal;margin:0 10px}
+.ref-row{padding-block:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px 30px;flex-wrap:wrap;align-items:baseline}
+.ref-row b{font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.ref-row span{color:var(--ink-2)}
+.cv-cta{margin-top:44px;font-family:var(--serif);font-style:italic;font-size:1.15rem}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .stage{justify-self:start;width:min(340px,80vw)}
+  .wi-media,.wi-body{grid-column:1/13!important;order:initial!important;margin-top:0!important}
+  .work-item{gap:28px}
+  .contact-grid{grid-template-columns:1fr}
+  .cv-item{grid-template-columns:1fr;gap:8px}
+}
+@media(max-width:640px){
+  .why{grid-template-columns:1fr}
+  .why .frame{width:150px}
+  .pr{grid-template-columns:1fr;gap:6px}
+  .pr .idx{padding-top:0}
+  .slot-head{grid-template-columns:1fr auto;grid-template-rows:auto auto;row-gap:8px}
+  .slot-head .plus{grid-row:1;grid-column:2}
+  .dl div{grid-template-columns:1fr;gap:2px}
+}
+
+/* ---------- print (curriculum) ---------- */
+@media print{
+  header,.skip,.beam,.print-btn{display:none!important}
+  body{background:#fff;color:#000;font-size:11.5pt}
+  .cv-top{padding-top:0}
+  a{color:#000;text-decoration:none}
+  section,.cv-sec{padding-block:16pt}
+  .cv-item{break-inside:avoid}
+  .reveal{opacity:1!important;transform:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sun,.halo,.breath span,.wordmark .dot,.beam,.success .pip{animation:none!important}
+  .kb img{transition:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="siteHeader">
+  <div class="wrap bar">
+    <a class="wordmark" href="#/" id="homeLink">Esther Kerubo <span class="dot" aria-hidden="true"></span></a>
+    <nav aria-label="Main">
+      <a href="#/" data-scroll="practice">Practice</a>
+      <a href="#/" data-scroll="work">Work</a>
+      <a href="#/" data-scroll="days">Open days</a>
+      <a href="#/cv">Curriculum</a>
+      <a href="#/" data-scroll="contact">Contact</a>
+    </nav>
+    <button class="chime" id="chimeToggle" aria-pressed="false" title="Play a soft chime on your first scroll">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span id="chimeLabel">chime off</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ VIEW: HOME ============ -->
+<div id="view-home">
+
+  <section class="hero">
+    <div class="beam" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker reveal"><b>Esther Kerubo Nyamweya</b> · ICT support · systems admin · web</p>
+        <h1 class="reveal" style="--d:.08s">Calm systems,<br><em>tended</em> daily.</h1>
+        <p class="lede reveal" style="--d:.16s">I'm <strong>Esther</strong> — an IT administrator and developer who believes technology should feel like a quiet room, not an alarm bell. From the help desk to the cloud, I keep the unglamorous machinery of lodges and small teams running, so other people can do their work in peace.</p>
+        <div class="ctas reveal" style="--d:.24s">
+          <a class="btn" href="#/" data-scroll="contact">Book a free first call
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>
+          </a>
+          <a class="link-quiet" href="#/cv">The curriculum</a>
+        </div>
+        <div class="hero-meta reveal" style="--d:.32s">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Lukenya · Machakos, Kenya</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>Currently — IT Administrator, Maanzoni Lodge</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>AWS Certified Cloud Practitioner</span>
+        </div>
+      </div>
+      <div class="stage reveal" style="--d:.2s" aria-hidden="true">
+        <div class="arch">
+          <div class="halo"></div>
+          <div class="horizon"></div>
+          <div class="sun"></div>
+        </div>
+        <p class="breath"><span class="in">breathe in</span><span class="out">breathe out</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 · practice -->
+  <section id="practice">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p class="kicker"><b>( 01 )</b> Practice</p>
+        <h2>A practice, not a pile of tools.</h2>
+        <p class="sub">Four disciplines, kept the way a studio keeps its rooms — swept daily, opened on time, never cluttered.</p>
+      </div>
+      <div class="practice-list">
+        <article class="pr reveal">
+          <span class="idx">01</span>
+          <div>
+            <h3>Systems administration</h3>
+            <p class="muse">keeping the lights on, quietly.</p>
+            <p>Servers, user accounts, networks and hardware — Windows and Active Directory, monitoring, preventive maintenance, and the unglamorous routines that prevent 3 a.m. phone calls.</p>
+            <p class="tags"><span>Windows Server</span><span>Active Directory</span><span>Monitoring</span><span>Asset management</span></p>
+          </div>
+        </article>
+        <article class="pr reveal" style="--d:.06s">
+          <span class="idx">02</span>
+          <div>
+            <h3>Cloud &amp; infrastructure</h3>
+            <p class="muse">steady ground beneath changing weather.</p>
+            <p>AWS Certified Cloud Practitioner, with working knowledge of CI/CD, Docker, Kubernetes and Terraform — plus the backup and recovery habits that make migrations boring. The good kind of boring.</p>
+            <p class="tags"><span>AWS</span><span>CI/CD</span><span>Docker</span><span>Terraform</span><span>Backup &amp; recovery</span></p>
+          </div>
+        </article>
+        <article class="pr reveal" style="--d:.12s">
+          <span class="idx">03</span>
+          <div>
+            <h3>Web &amp; CMS</h3>
+            <p class="muse">rooms people can find, and stay in.</p>
+            <p>Drupal, WordPress, PHP and Angular. Sites built and tended for speed, accessibility and findability — from internal government systems to a national summit's front door.</p>
+            <p class="tags"><span>Drupal</span><span>WordPress</span><span>PHP</span><span>Angular</span><span>HTML / CSS</span></p>
+          </div>
+        </article>
+        <article class="pr reveal" style="--d:.18s">
+          <span class="idx">04</span>
+          <div>
+            <h3>Support &amp; service management</h3>
+            <p class="muse">a calm voice at the front desk.</p>
+            <p>First-line support done properly: incidents logged, escalated and closed; expectations communicated in plain language; hospitality systems — Opera PMS, SUN Systems, Materials Control — kept serving.</p>
+            <p class="tags"><span>ITSM</span><span>Microsoft 365</span><span>Opera PMS</span><span>AV &amp; conferencing</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · work -->
+  <section id="work" class="sand">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p class="kicker"><b>( 02 )</b> Selected work</p>
+        <h2>Built quietly, <em>measured</em> honestly.</h2>
+        <p class="sub">Three pieces from my years at Kenya Revenue Authority. The full record lives on the curriculum page.</p>
+      </div>
+
+      <article class="work-item reveal">
+        <div class="wi-media kb frame tall">
+          <img src="https://picsum.photos/seed/esther-estates/900/1120.jpg" alt="Sunlit architectural interior — placeholder for the Estates Management System" loading="lazy">
+          <span class="fig">PHP · 2023–2024</span>
+        </div>
+        <div class="wi-body">
+          <span class="wi-num">No. 01</span>
+          <h3>KRA Estates Management System</h3>
+          <p>Estate allocation, rent tracking and maintenance requests, gathered out of scattered spreadsheets and into one calm place for the Authority's estate managers.</p>
+          <div class="stats">
+            <div class="stat"><b>−30%</b><span>manual workload</span></div>
+            <div class="stat"><b>+40%</b><span>data accuracy</span></div>
+            <div class="stat"><b>−50%</b><span>processing time</span></div>
+          </div>
+          <a class="wi-more" href="#/cv">Details on the curriculum <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></a>
+        </div>
+      </article>
+
+      <article class="work-item alt reveal">
+        <div class="wi-media kb frame mid">
+          <img src="https://picsum.photos/seed/esther-summit/900/900.jpg" alt="A hall prepared for an event — placeholder for the Annual Tax Summit website" loading="lazy">
+          <span class="fig">WordPress · 2024</span>
+        </div>
+        <div class="wi-body">
+          <span class="wi-num">No. 02</span>
+          <h3>Annual Tax Summit website</h3>
+          <p>One central home for a national event: registration, speaker profiles, news and updates — built on WordPress to absorb the summit's traffic spike without breaking a sweat.</p>
+          <div class="stats">
+            <div class="stat"><b>+50%</b><span>summit traffic</span></div>
+            <div class="stat"><b>1</b><span>home for everything</span></div>
+          </div>
+          <a class="wi-more" href="#/cv">Details on the curriculum <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></a>
+        </div>
+      </article>
+
+      <article class="work-item alt2 reveal">
+        <div class="wi-media kb frame mid">
+          <img src="https://picsum.photos/seed/esther-learning/900/900.jpg" alt="A quiet study desk by a window — placeholder for the KESRA E-Learning Platform" loading="lazy">
+          <span class="fig">Angular · 2023</span>
+        </div>
+        <div class="wi-body">
+          <span class="wi-num">No. 03</span>
+          <h3>KESRA E-Learning Platform</h3>
+          <p>Functionality and accessibility improvements to the e-learning platform, helping more users actually finish what they start — and enjoy getting there.</p>
+          <div class="stats">
+            <div class="stat"><b>+20%</b><span>user engagement</span></div>
+            <div class="stat"><b>AA</b><span>accessibility focus</span></div>
+          </div>
+          <a class="wi-more" href="#/cv">Details on the curriculum <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 · why this work -->
+  <section id="why">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p class="kicker"><b>( 03 )</b> Why this work</p>
+        <h2>Three rooms, three <em>reasons</em>.</h2>
+        <p class="sub">The roles and duties live on the curriculum page. Here, hover — or tap — each room to hear why I stayed, in my own words.</p>
+      </div>
+      <div class="why-list">
+        <article class="why reveal" tabindex="0" data-quote="Guests remember the view of Lukenya, not the Wi-Fi password. The best support is the crisis a guest never notices — and I work quietly until that is every day." data-hint="Hover or tap — why I stay.">
+          <div class="kb frame"><img src="https://picsum.photos/seed/esther-lodge/500/640.jpg" alt="Warm lodge interior in morning light — placeholder portrait" loading="lazy"></div>
+          <div>
+            <p class="why-date">04 / 2025 — Present</p>
+            <h3>IT Administrator</h3>
+            <p class="org">Maanzoni Lodge — Lukenya, Machakos</p>
+            <p class="quote hint">Hover or tap — why I stay.</p>
+          </div>
+        </article>
+        <article class="why reveal" style="--d:.06s" tabindex="0" data-quote="Somewhere in the Estates system is a queue that no longer forms. Someone goes home a little earlier because of it. That is the whole reason I write software." data-hint="Hover or tap — why I build.">
+          <div class="kb frame"><img src="https://picsum.photos/seed/esther-kra/500/640.jpg" alt="Desk with a window overlooking the city — placeholder portrait" loading="lazy"></div>
+          <div>
+            <p class="why-date">01 / 2023 — 12 / 2024</p>
+            <h3>Software Developer</h3>
+            <p class="org">Kenya Revenue Authority — Times Tower, Nairobi</p>
+            <p class="quote hint">Hover or tap — why I build.</p>
+          </div>
+        </article>
+        <article class="why reveal" style="--d:.12s" tabindex="0" data-quote="This is where I learned that patience is a technical skill. Most IT emergencies are really just anxious people — and calm is something you can deploy." data-hint="Hover or tap — where it began.">
+          <div class="kb frame"><img src="https://picsum.photos/seed/esther-desk/500/640.jpg" alt="A first workstation beside a plant — placeholder portrait" loading="lazy"></div>
+          <div>
+            <p class="why-date">01 / 2022 — 03 / 2022</p>
+            <h3>ICT Support Assistant · Attachment</h3>
+            <p class="org">Kenya Revenue Authority — Ushuru Pension Towers, Nairobi</p>
+            <p class="quote hint">Hover or tap — where it began.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · open days -->
+  <section id="days" class="sand">
+    <div class="wrap">
+      <div class="shead reveal">
+        <p class="kicker"><b>( 04 )</b> Open days</p>
+        <h2>A few engagements, <em>kept</em> well.</h2>
+        <p class="sub">Like a studio timetable — I take on a small number of commitments at a time, so each one gets full attention. Expand a row to see what it involves.</p>
+      </div>
+      <div class="slots">
+        <article class="slot reveal">
+          <button class="slot-head" aria-expanded="false" aria-controls="slot1">
+            <span class="slot-title">Fractional IT support <i>· retainer</i></span>
+            <span class="slot-status"><span class="pip"></span>2 open</span>
+            <svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="slot-body" id="slot1"><div>
+            <div class="slot-inner">
+              <p class="where">Where — remote · on-site days within Nairobi – Machakos</p>
+              <p>A set number of days each month where I become your IT department: the help desk, the accounts, the network, and the printer that only misbehaves on Fridays.</p>
+              <dl class="dl">
+                <div><dt>You'll need</dt><dd>A named point person and admin access to your Microsoft 365 tenant.</dd></div>
+                <div><dt>Timeline</dt><dd>Three months to start, then rolling.</dd></div>
+                <div><dt>Good fit</dt><dd>Lodges, clinics, schools and small offices without in-house IT.</dd></div>
+              </dl>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="slot reveal" style="--d:.05s">
+          <button class="slot-head" aria-expanded="false" aria-controls="slot2">
+            <span class="slot-title">CMS rescue &amp; handover <i>· WordPress / Drupal</i></span>
+            <span class="slot-status"><span class="pip low"></span>1 left</span>
+            <svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="slot-body" id="slot2"><div>
+            <div class="slot-inner">
+              <p class="where">Where — remote</p>
+              <p>Sites that have outgrown their gardener: updates untangled, plugins pruned, speed restored, and everything documented before I hand back the keys.</p>
+              <dl class="dl">
+                <div><dt>You'll need</dt><dd>Hosting and admin credentials, plus any existing backups.</dd></div>
+                <div><dt>Timeline</dt><dd>About two weeks.</dd></div>
+                <div><dt>Good fit</dt><dd>Marketing sites and event platforms gone quiet and creaky.</dd></div>
+              </dl>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="slot reveal" style="--d:.1s">
+          <button class="slot-head" aria-expanded="false" aria-controls="slot3">
+            <span class="slot-title">Microsoft 365 tidy-up <i>· tenant audit</i></span>
+            <span class="slot-status"><span class="pip"></span>2 open</span>
+            <svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="slot-body" id="slot3"><div>
+            <div class="slot-inner">
+              <p class="where">Where — remote</p>
+              <p>Accounts, licenses, permissions and mail flow — audited, cleaned and put in order. The unglamorous work that prevents next quarter's emergency.</p>
+              <dl class="dl">
+                <div><dt>You'll need</dt><dd>Global admin access for one audit week.</dd></div>
+                <div><dt>Timeline</dt><dd>One week of audit, one week of fixes.</dd></div>
+                <div><dt>Good fit</dt><dd>Teams where "who owns this account?" has become a real question.</dd></div>
+              </dl>
+            </div>
+          </div></div>
+        </article>
+
+        <article class="slot reveal" style="--d:.15s">
+          <button class="slot-head" aria-expanded="false" aria-controls="slot4">
+            <span class="slot-title">AWS readiness review <i>· advisory</i></span>
+            <span class="slot-status"><span class="pip hollow"></span>Waitlist</span>
+            <svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="slot-body" id="slot4"><div>
+            <div class="slot-inner">
+              <p class="where">Where — remote</p>
+              <p>A plain-language review of where your systems sit today, and a realistic, right-sized path toward the cloud — written for decision-makers, not dashboards.</p>
+              <dl class="dl">
+                <div><dt>You'll need</dt><dd>One honest hour with whoever knows the current setup.</dd></div>
+                <div><dt>Timeline</dt><dd>Ten working days to a written review.</dd></div>
+                <div><dt>Good fit</dt><dd>Small teams sizing up their first move off a single server.</dd></div>
+              </dl>
+            </div>
+          </div></div>
+        </article>
+      </div>
+      <div class="legend reveal">
+        <span><span class="pip"></span>Open — enquire below</span>
+        <span><span class="pip low"></span>Last slot</span>
+        <span><span class="pip hollow"></span>Waitlist</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · first call -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="pitch reveal">
+        <p class="kicker"><b>( 05 )</b> First call</p>
+        <h2 style="margin-top:18px">The first call is <em>free</em>.</h2>
+        <p>Twenty minutes, no pitch and no obligation. Tell me what's humming, what's broken, and what calm would look like for your team — I'll tell you honestly whether I'm the right pair of hands.</p>
+        <div class="direct">
+          <a class="row" href="mailto:keruboesther98@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            <span><small>Email</small>keruboesther98@gmail.com</span>
+          </a>
+          <a class="row" href="tel:+254748483685">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span><small>Phone</small>+254 748 483 685</span>
+          </a>
+          <a class="row" href="https://linkedin.com/in/esther-nyamweya-/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+            <span><small>LinkedIn</small>in/esther-nyamweya-</span>
+          </a>
+          <a class="row" href="https://github.com/KeruboEssy" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+            <span><small>GitHub</small>github.com/KeruboEssy</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="form-panel reveal" style="--d:.1s">
+        <div class="form-wrap" id="formWrap">
+          <form id="contactForm" novalidate>
+            <h3>Request your free call</h3>
+            <div class="field">
+              <label for="fName">Your name</label>
+              <input id="fName" name="name" type="text" autocomplete="name" placeholder="e.g. Amina W.">
+              <p class="err">A name helps me greet you properly.</p>
+            </div>
+            <div class="field">
+              <label for="fEmail">Email</label>
+              <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@studio.co.ke">
+              <p class="err">That email doesn't look quite right.</p>
+            </div>
+            <div class="field">
+              <label for="fTopic">What are we tending?</label>
+              <select id="fTopic" name="topic">
+                <option>Just a conversation</option>
+                <option>Fractional IT support</option>
+                <option>CMS rescue &amp; handover</option>
+                <option>Microsoft 365 tidy-up</option>
+                <option>AWS readiness review</option>
+                <option>Something else entirely</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="fMsg">Anything else? <i style="text-transform:none;letter-spacing:0">(optional)</i></label>
+              <textarea id="fMsg" name="message" placeholder="Two or three sentences is plenty."></textarea>
+            </div>
+            <button class="btn" type="submit">Request the free call
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>
+            </button>
+            <p class="form-note">One reply, from me. No lists, no sequences, no "just checking in".</p>
+          </form>
+          <div class="success" role="status">
+            <span class="pip" aria-hidden="true"></span>
+            <h4>Received — thank you<span id="successName"></span>.</h4>
+            <p>Your note is in. Expect one reply from keruboesther98@gmail.com within two working days. Until then — breathe easy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <p class="foot-line">Steady hands for restless systems.</p>
+        <div class="foot-meta">
+          <span>Esther Kerubo Nyamweya — IT Administrator · Web Developer</span>
+          <span>Machakos, Kenya · <a href="mailto:keruboesther98@gmail.com">keruboesther98@gmail.com</a> · <a href="tel:+254748483685">+254 748 483 685</a></span>
+          <span><a href="#/cv">Curriculum</a> · <a href="https://github.com/KeruboEssy" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/esther-nyamweya-/" target="_blank" rel="noopener">LinkedIn</a></span>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>© <span id="year"></span> Esther Kerubo Nyamweya</span>
+        <span>Built by hand, kept with care</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ============ VIEW: CURRICULUM ============ -->
+<div id="view-cv" hidden>
+  <div class="wrap cv-top">
+    <div class="cv-head reveal">
+      <div>
+        <p class="kicker"><b>Esther Kerubo Nyamweya</b> · Curriculum</p>
+        <h1>The full <em>record</em>.</h1>
+        <div class="cv-contacts">
+          <a href="mailto:keruboesther98@gmail.com">keruboesther98@gmail.com</a>
+          <a href="tel:+254748483685">+254 748 483 685</a>
+          <a href="https://linkedin.com/in/esther-nyamweya-/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/KeruboEssy" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <button class="print-btn" id="printBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print / save as PDF
+      </button>
+    </div>
+    <p class="sub reveal" style="--d:.08s;margin-bottom:56px">The formal record behind the calm — experience, education, certification and references, transcribed from my CV.</p>
+
+    <div class="cv-sec reveal">
+      <h2>Experience</h2>
+
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">04 / 2025 — Present</p>
+          <h3>IT Administrator</h3>
+          <p class="org">Maanzoni Lodge — Lukenya, Machakos, Kenya</p>
+        </div>
+        <ul>
+          <li>First-line ICT support for staff, conference delegates and guests in a high-demand hospitality environment — 85–90% first-contact resolution, reduced escalation dependency.</li>
+          <li>Microsoft 365 administration (Outlook, Teams, Office): ~90% of user email and collaboration issues resolved, 30+ user requests supported monthly.</li>
+          <li>Hospitality systems — Opera PMS, SUN Systems, Materials Control — facilitating 1,500+ guest reservations and inventory transactions monthly.</li>
+          <li>AV and conferencing support for 20+ meetings and corporate events monthly; 95%+ executed without technical disruption.</li>
+          <li>Hardware installation and preventive maintenance contributing to an estimated 15% reduction in downtime; ICT asset inventory maintained with zero tracked losses.</li>
+          <li>Backups, system recovery and access-control procedures safeguarding business continuity.</li>
+        </ul>
+      </div>
+
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">01 / 2023 — 12 / 2024</p>
+          <h3>Software Developer</h3>
+          <p class="org">Kenya Revenue Authority — Times Tower, Nairobi, Kenya</p>
+        </div>
+        <ul>
+          <li>KRA Estates Management System (PHP): −30% manual workload, +40% data accuracy, −50% processing time for estate allocation, rent tracking and maintenance requests.</li>
+          <li>KESRA E-Learning Platform (Angular): improved functionality and accessibility, contributing to an estimated 20% increase in user engagement.</li>
+          <li>Corporate website redesign: −25% bounce rate, +40% page load speed, +30% user engagement.</li>
+          <li>Annual Tax Summit website (WordPress CMS): centralised registration, speakers and news — +50% website traffic during the summit.</li>
+          <li>KRA Hub (Drupal): +35% site responsiveness, −40% content update turnaround, 99%+ availability maintained.</li>
+        </ul>
+      </div>
+
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">01 / 2022 — 03 / 2022</p>
+          <h3>ICT Support Assistant · Industrial Attachment</h3>
+          <p class="org">Kenya Revenue Authority — Ushuru Pension Towers, Nairobi, Kenya</p>
+        </div>
+        <ul>
+          <li>Day-to-day help desk operations — 95% of IT issues resolved within SLA timelines, overall user satisfaction +10%.</li>
+          <li>Proactive troubleshooting and preventive support across desktops, laptops, printers and network — recurring issues −20%.</li>
+          <li>ICT inventories identifying 10 critical vulnerabilities, remediation lifting network performance +10%.</li>
+          <li>Cross-department support reducing IT downtime by 15% and lifting system uptime to 98%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-sec reveal">
+      <h2>Education</h2>
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">08 / 2018 — 11 / 2022</p>
+          <h3>BSc Computer Science</h3>
+          <p class="org">St. Paul's University</p>
+        </div>
+        <ul><li>Second Class Honours (Upper Division)</li></ul>
+      </div>
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">01 / 2015 — 12 / 2017</p>
+          <h3>Kenya Certificate of Secondary Education</h3>
+          <p class="org">St. Yermo Secondary School</p>
+        </div>
+        <ul><li>B plain</li></ul>
+      </div>
+    </div>
+
+    <div class="cv-sec reveal">
+      <h2>Certification</h2>
+      <div class="cv-item">
+        <div>
+          <p class="cv-when">Issued 21 / 04 / 2024</p>
+          <h3>AWS Certified Cloud Practitioner</h3>
+        </div>
+        <ul><li>Cloud concepts · AWS services · CI/CD, Kubernetes, Terraform, Docker · Automation &amp; monitoring</li></ul>
+      </div>
+    </div>
+
+    <div class="cv-sec reveal">
+      <h2>Skills</h2>
+      <p class="skills-line">Systems administration<i>·</i>ICT support &amp; service management<i>·</i>Microsoft 365 administration<i>·</i>Windows &amp; Active Directory<i>·</i>Network administration — LAN / Wi-Fi / TCP-IP<i>·</i>Hardware, software &amp; peripherals<i>·</i>Information security &amp; access control<i>·</i>Data backup &amp; recovery<i>·</i>Drupal &amp; WordPress<i>·</i>PHP<i>·</i>Angular<i>·</i>HTML &amp; CSS<i>·</i>AWS — Certified Cloud Practitioner<i>·</i>CI/CD, Docker, Kubernetes, Terraform<i>·</i>Basic Linux administration<i>·</i>Opera PMS, SUN Systems, Materials Control<i>·</i>ICT asset &amp; inventory management<i>·</i>AV &amp; conferencing support<i>·</i>Technical documentation<i>·</i>Customer service &amp; stakeholder support</p>
+    </div>
+
+    <div class="cv-sec reveal">
+      <h2>References</h2>
+      <div class="ref-row"><span><b>Litt Okoba</b><br><span>Manager — IT Department, Maanzoni Lodge</span></span><a href="mailto:litt@maanzonilodge.co.ke">litt@maanzonilodge.co.ke</a></div>
+      <div class="ref-row"><span><b>Kenny Mwatela</b><br><span>Assistant Manager — ICT Department, Kenya Revenue Authority</span></span><a href="mailto:kenny.mwatela@kra.go.ke">kenny.mwatela@kra.go.ke</a></div>
+      <div class="ref-row"><span><b>Andrew Yotui</b><br><span>Lecturer — Computer Science, St. Paul's University</span></span><a href="mailto:andrewyegon@gmail.com">andrewyegon@gmail.com</a></div>
+    </div>
+
+    <div class="cv-sec reveal">
+      <h2>And, briefly —</h2>
+      <p class="cv-cta">Prefer the short version? <a href="#/" data-scroll="contact">Book the free first call</a> — twenty minutes, no pitch.</p>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+(function(){
+  const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- chime state (opt-in, Web Audio, no files) ---- */
+  let actx=null, armed=false, played=true;
+  function ac(){ actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==='suspended') actx.resume(); return actx; }
+  function note(f,t,d,v){ const c=ac(),n=c.currentTime,o=c.createOscillator(),g=c.createGain();
+    o.type='sine'; o.frequency.value=f;
+    g.gain.setValueAtTime(.0001,n+t);
+    g.gain.exponentialRampToValueAtTime(v,n+t+.03);
+    g.gain.exponentialRampToValueAtTime(.0001,n+t+d);
+    o.connect(g); g.connect(c.destination); o.start(n+t); o.stop(n+t+d+.1); }
+  function chime(){ note(880,0,1.8,.055); note(1108.73,.16,1.8,.045); note(1318.51,.32,2.2,.04); }
+  const toggle=$('#chimeToggle'), chimeLabel=$('#chimeLabel');
+  toggle.addEventListener('click',()=>{
+    armed=!armed;
+    if(armed){ played=false; ac(); note(659.25,0,.7,.035); } else { played=true; }
+    toggle.setAttribute('aria-pressed',armed);
+    chimeLabel.textContent=armed?'chime on':'chime off';
+  });
+
+  /* ---- header + first-scroll chime ---- */
+  const header=$('#siteHeader');
+  addEventListener('scroll',()=>{
+    header.classList.toggle('scrolled',scrollY>10);
+    if(armed && !played && scrollY>4){ played=true; chime(); }
+  },{passive:true});
+
+  /* ---- hash router: home / curriculum ---- */
+  const home=$('#view-home'), cv=$('#view-cv');
+  let pending=null, booted=false;
+  function router(){
+    const onCv=location.hash==='#/cv';
+    home.hidden=onCv; cv.hidden=!onCv;
+    document.title=onCv?'Curriculum — Esther Kerubo Nyamweya':'Esther Kerubo Nyamweya — calm systems, tended daily';
+    if(pending){
+      const t=pending; pending=null;
+      requestAnimationFrame(()=>{ const el=document.getElementById(t);
+        if(el) el.scrollIntoView({behavior:RM?'auto':'smooth'}); });
+    } else if(booted){ window.scrollTo({top:0,behavior:'instant'}); }
+    booted=true;
+  }
+  addEventListener('hashchange',router);
+
+  /* nav links that scroll within home (works from the CV page too) */
+  $$('[data-scroll]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=a.dataset.scroll;
+    if(t==='top'){ window.scrollTo({top:0,behavior:RM?'auto':'smooth'}); return; }
+    if(location.hash==='#/cv'){ pending=t; location.hash='#/'; }
+    else { const el=document.getElementById(t); if(el) el.scrollIntoView({behavior:RM?'auto':'smooth'}); }
+  }));
+  $('#homeLink').addEventListener('click',e=>{
+    if(location.hash!=='#/cv'){ e.preventDefault(); window.scrollTo({top:0,behavior:RM?'auto':'smooth'}); }
+  });
+
+  /* ---- headlines fade up, 600ms, as they enter view ---- */
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+  }),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+  $$('.reveal').forEach(el=>io.observe(el));
+
+  /* ---- schedule rows expand to reveal details ---- */
+  $$('.slot-head').forEach(btn=>btn.addEventListener('click',()=>{
+    const open=btn.closest('.slot').classList.toggle('open');
+    btn.setAttribute('aria-expanded',open);
+  }));
+
+  /* ---- "why this work" quotes type out character-by-character ---- */
+  $$('.why').forEach(card=>{
+    const q=$('.quote',card), full=card.dataset.quote, hint=card.dataset.hint;
+    let timer=null;
+    const start=()=>{
+      if(q.dataset.done===full) return;
+      clearInterval(timer);
+      if(RM){ q.textContent=full; q.dataset.done=full; q.classList.remove('hint','typing'); return; }
+      q.classList.remove('hint'); q.classList.add('typing');
+      let i=0; q.textContent='';
+      timer=setInterval(()=>{
+        q.textContent=full.slice(0,++i);
+        if(i>=full.length){ clearInterval(timer); q.classList.remove('typing'); q.dataset.done=full; }
+      },20);
+    };
+    card.addEventListener('mouseenter',start);
+    card.addEventListener('click',start);
+    card.addEventListener('focusin',start);
+  });
+
+  /* ---- capture form: inline validation + quiet success ---- */
+  const form=$('#contactForm'), wrap=$('#formWrap');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    let ok=true;
+    const name=$('#fName'), email=$('#fEmail');
+    const mark=(input,bad)=>{ input.closest('.field').classList.toggle('invalid',bad); if(bad) ok=false; };
+    mark(name, name.value.trim().length<2);
+    mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+    if(!ok) return;
+    $('#successName').textContent=', '+name.value.trim().split(' ')[0];
+    wrap.classList.add('sent');
+    $('.success',wrap).setAttribute('tabindex','-1');
+    $('.success',wrap).focus({preventScroll:true});
+  });
+  $$('#contactForm input, #contactForm textarea').forEach(i=>
+    i.addEventListener('input',()=>i.closest('.field').classList.remove('invalid')));
+
+  /* ---- curriculum: print / save as PDF ---- */
+  $('#printBtn').addEventListener('click',()=>window.print());
+
+  $('#year').textContent=new Date().getFullYear();
+  router();
+})();
+</script>
+</body>
+</html>
